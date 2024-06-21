@@ -1,0 +1,114 @@
+import { Canvas, Controls, Meta } from '@storybook/blocks';
+
+import * as DataTableStories from './DataTable.stories';
+
+<Meta of={DataTableStories} />
+
+# DataTable
+
+The `DataTable` component is a versatile and customizable table component for React. This documentation provides an overview of the component's props, usage, and examples.
+
+## Props
+
+The `DataTable` component accepts the following props:
+
+<Controls />
+
+## Usage
+
+Here is an example of how to use the `DataTable` component:
+
+<Canvas of={DataTableStories.ProductList} />
+
+In this example:
+
+- The `name` columns use `accessorKey` to directly map to the data keys.
+- The `price` column uses a custom `header` function to include sorting buttons and a custom `cell` function to format the price.
+- The `status` column uses a custom `cell` function to display different badges based on the status value.
+- The `actions` column includes a dropdown menu for row actions.
+
+### Pagination
+
+The `DataTable` component includes built-in pagination controls that appear if the data length exceeds 10 items. The pagination controls include "Previous" and "Next" buttons to navigate through the pages.
+
+### Sorting
+
+The `DataTable` supports column sorting out of the box. By clicking on the column headers, users can sort the table data in ascending or descending order.
+
+### Styling
+
+You can customize the appearance of the `DataTable` by passing custom CSS classes via the `className` prop.
+
+## Column definition options
+
+When defining columns for the `DataTable`, you need to specify several options to control the behavior and rendering of each column. Below are the primary options available for column definitions.
+
+### `id`
+
+```tsx
+id: string;
+```
+
+The unique identifier for the column. This is optional when:
+
+- An accessor column is created with an object key accessor.
+- The column header is defined as a string.
+
+### `accessorKey`
+
+```tsx
+accessorKey?: string & typeof TData
+```
+
+The key of the row object to use when extracting the value for the column. This is a simple way to define a column if the data key directly matches the column name.
+
+### `accessorFn`
+
+```tsx
+accessorFn?: (originalRow: TData, index: number) => any
+```
+
+A function used to extract the value for the column from each row. Use this if you need to compute or transform the data for the column.
+
+### `columns`
+
+```tsx
+columns?: ColumnDef<TData>[]
+```
+
+An array of child column definitions to include in a group column. This allows for nested column structures.
+
+### `header`
+
+```tsx
+header?:
+  | string
+  | ((props: {
+      table: Table<TData>
+      header: Header<TData>
+      column: Column<TData>
+    }) => unknown)
+```
+
+The header to display for the column. This can be a string or a function that returns the rendered header. If a string is provided, it can also serve as the default column ID.
+
+### `cell`
+
+```tsx
+cell?:
+  | string
+  | ((props: {
+      table: Table<TData>
+      row: Row<TData>
+      column: Column<TData>
+      cell: Cell<TData>
+      getValue: () => any
+      renderValue: () => any
+    }) => unknown)
+```
+
+The cell to display for each row in the column. This can be a string or a function that returns the rendered cell. The function receives several props, allowing for complex rendering logic.
+
+## Notes
+
+Columns are where you define the core of what your table will look like. They define the data that will be displayed, how it will be formatted, sorted and filtered. Ensure that the `columns` and `data` props are correctly typed and structured to match your data model.
