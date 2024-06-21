@@ -1,30 +1,44 @@
-# React + TypeScript + Vite
+# UX Engineer Storybook
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The `ux-engineer-storybook` project is designed to provide a robust development environment using Storybook for UI components, Vite for rapid builds, and TypeScript for type-safe JavaScript. This project leverages popular libraries and tools to create a scalable and maintainable codebase for developing and documenting UI components.
 
-Currently, two official plugins are available:
+## Installation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+To install the project, clone the repository and install the dependencies:
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```bash
+pnpm install
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Usage
+
+### Development Server
+
+To start the development server, run:
+
+```bash
+pnpm run dev
+```
+
+### Storybook
+
+To start Storybook for developing and viewing UI components, run:
+
+```bash
+pnpm run storybook
+```
+
+To build the Storybook for production, run:
+
+```bash
+pnpm run build-storybook
+```
+
+## Features
+
+- **Storybook**: Develop, document, and test UI components in isolation.
+- **TypeScript**: Ensures type safety throughout the codebase.
+- **TailwindCSS**: Utility-first CSS framework for styling.
+- **Radix UI**: Accessible, unstyled components for building high-quality UI.
+- **Vite**: Fast and optimized build tool for modern web projects.
+- **ESLint**: Pluggable linting utility for JavaScript and TypeScript.
